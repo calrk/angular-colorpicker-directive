@@ -388,6 +388,10 @@ colorPicker.directive('colorPicker', ['$document', '$compile', 'ColorHelper', fu
                         '</div>');
 
                 document.getElementsByTagName("body")[0].appendChild(template[0]);
+                scope.$on('$destroy', function(){
+                    document.getElementsByTagName("body")[0].removeChild(template[0]);
+                });
+
                 $compile(template)(scope);
 
                 function updateFromString(string) {
